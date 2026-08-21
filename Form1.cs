@@ -78,8 +78,10 @@ namespace Windowscarfiles
             openFileDialog1.ShowDialog();
             if (openFileDialog1.FileName.Trim() != "") 
             { 
-                s=File.ReadAllText(openFileDialog1.FileName).Split('\x01');
-                Array.Resize(ref cards, s.Length);
+                s=File.ReadAllText(openFileDialog1.FileName).Trim().Split('\x01');
+                Array.Resize(ref cards, s.Length-1);
+
+                MessageBox.Show(cards.Length.ToString());
                 foreach (var s2 in s) 
                 {
                     ss = s2.Split('\x02');
